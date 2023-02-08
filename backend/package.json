@@ -15,6 +15,7 @@
   "dependencies": {
     "@google-cloud/secret-manager": "^4.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "firebase-admin": "^11.5.0",
     "ts-node": "^10.9.1"
