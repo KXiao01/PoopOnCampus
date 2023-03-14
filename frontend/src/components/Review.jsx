@@ -37,7 +37,7 @@ export default function Review({info, onClose}) {
 
     const review = {
       name: name,
-      rating: rating,
+      rating: Number(rating),
       description: descrip
     }
 

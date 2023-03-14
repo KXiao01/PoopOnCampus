@@ -9,7 +9,6 @@ import {
  } from "@react-google-maps/api";
 // import { formatRelative } from "date-fns";
 import mapStyles from "./mapStyles"
-// import locations from "../location.json"
 import Panel, { setInfo } from "../Panel";
 import Review from "../Review";
 // import "@reach.combobox/styles.css"
@@ -24,6 +23,7 @@ const options = {
 	styles: mapStyles,
 	disableDefaultUI: true,
 	zoomcontrol: true,
+	gestureHandling: "greedy",
 }
 
 const mapContainerStyle = {
@@ -41,7 +41,7 @@ export default function GMap () {
 	});
 
 	const [locations, setLocations] = useState({});
-  const [selected, setSelected] = useState(null);
+	const [selected, setSelected] = useState(null);
 	const [isPanelOpen, setIsPanelOpen] = useState(false);
 	const [isReviewOpen, setIsReviewOpen] = useState(false);
 
@@ -91,7 +91,7 @@ export default function GMap () {
 				))}
 
 				{isPanelOpen && (
-          			<Panel info={selected} onClose={() => setIsPanelOpen(false)} setIsReviewOpen={setIsReviewOpen}/>
+          			<Panel info={selected} onClose={() => setIsPanelOpen(false)} isReviewOpen={isReviewOpen} setIsReviewOpen={setIsReviewOpen}/>
         		)}
 			</GoogleMap>
 		</div>

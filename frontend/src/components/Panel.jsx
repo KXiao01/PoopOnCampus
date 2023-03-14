@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 
 
 
-export default function Panel({info, onClose, setIsReviewOpen}) {
+export default function Panel({info, onClose, isReviewOpen, setIsReviewOpen}) {
   // get reviews from info.reviews
 
   const [reviews, setReviews] = useState([]);
@@ -20,16 +20,18 @@ export default function Panel({info, onClose, setIsReviewOpen}) {
       .then((data) => {
         setReviews(data);
       });
-  }, []);
+  }, [isReviewOpen, info]);
+
+  const avgRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
 
   return (
       <Card bg='light' className='panel'>
-        <Button variant='danger' onClick={onClose}>close</Button>
+        <Button variant='danger' onClick={onClose} fluid center width="100%">Close</Button>
         <Card.Img src={info.img} style={{ width: '100%' }}></Card.Img>            
         <Card.Title>{info.title}</Card.Title>
-        <div>Rating: {info.avgRating}/5</div>
+        <div>Rating: {avgRating.toFixed(1)}/5</div>
               <h3>Reviews</h3>
-              <Button variant="primary" onClick={() => setIsReviewOpen(true)}>Write a review</Button>
+              <Button variant="primary" onClick={() => {setIsReviewOpen(true);}}>Write a review</Button>
               <div className='reviews'>
                 {reviews.map((review) => (
                   <div key={review.id} className='review'>
@@ -39,7 +41,6 @@ export default function Panel({info, onClose, setIsReviewOpen}) {
                   </div>
                 ))}
             </div>
-
       </Card>
 
   )

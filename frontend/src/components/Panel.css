@@ -3,14 +3,15 @@
     display: flex;
     z-index: 1; /* Stay on top */
     max-width: 25%;
+    margin-top: auto;
+    padding-bottom: 300px;
     min-height: 100%;
     max-height: 100%; 
     top: 30;
     left: 0;
     background-color: rgb(243, 242, 242);
-    padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s;
-    overflow-y: scroll;
+    overflow-y: scroll !important;
     overflow-x: hidden;
     border-right: #555;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
@@ -50,4 +51,9 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(129, 129, 129);
+}
+
+button {
+    width: 100%;
+    text-align: center;
 }
